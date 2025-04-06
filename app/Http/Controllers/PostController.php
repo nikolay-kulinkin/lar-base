@@ -43,16 +43,30 @@ class PostController extends Controller
          ],
       ];
 
-      Post::create([
-         'title'=>'another title of post from phpstorm',
-         'content'=>'another some interesting content',
-         'image'=>'another imageblabla.jpg',
-         'likes'=>50,
-         'is_published'=>1,
-      ]);
+      // Post::create([
+      //    'title'=>'another title of post from phpstorm',
+      //    'content'=>'another some interesting content',
+      //    'image'=>'another imageblabla.jpg',
+      //    'likes'=>50,
+      //    'is_published'=>1,
+      // ]);
       
       foreach ($postsArr as $item) {
          Post::create($item);
       }
+   }
+
+   public function update()
+   {
+      $post=Post::find(6);
+      // dd($post->title);
+      $post->update([
+         'title'=>'updated',
+         'content'=>'updated',
+         'image'=>'updated',
+         'likes'=>1000,
+         'is_published'=>0
+      ]);
+      dd('updated');
    }
 }

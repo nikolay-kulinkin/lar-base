@@ -22,3 +22,4 @@ Route::get('/my-page',[MyPlaceController::class,'index']);
 
 Route::get('/posts', [PostController::class,'index']);
 Route::get('/posts/create', [PostController::class,'create']);
+Route::get('/posts/update', [PostController::class,'update']);
