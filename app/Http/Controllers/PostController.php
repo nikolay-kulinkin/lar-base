@@ -8,14 +8,51 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
    public function index(){
+      // $post=Post::find(1);
+      // dd($post->title);
+      $posts = Post::all();
+      foreach($posts as $post){
+         dump($post->title);
+      }
+
    //  $posts = Post::where('is_published', 1)->get();
    //  foreach($posts as $post){
    //    dump($post->title);
-   //  }
-   $post = Post::where('is_published', 1)->first();
-   dd($post->title);
-    
-   
+   // //  }
 
-   } //
+   // $post = Post::where('is_published', 1)->first();
+   // dd($post->title);
+   } 
+
+   public function create()
+   {
+      $postsArr = [
+         [
+            'title'=>'title of post from phpstorm',
+            'content'=>'some interesting content',
+            'image'=>'imageblabla.jpg',
+            'likes'=>20,
+            'is_published'=>1,
+         ],
+         [
+            'title'=>'another title of post from phpstorm',
+            'content'=>'another some interesting content',
+            'image'=>'another imageblabla.jpg',
+            'likes'=>50,
+            'is_published'=>1,
+         ],
+      ];
+
+      Post::create([
+         'title'=>'another title of post from phpstorm',
+         'content'=>'another some interesting content',
+         'image'=>'another imageblabla.jpg',
+         'likes'=>50,
+         'is_published'=>1,
+      ]);
+      
+      foreach ($postsArr as $item) {
+         Post::create($item);
+      }
+   }
 }
