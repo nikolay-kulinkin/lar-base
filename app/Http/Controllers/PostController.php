@@ -83,4 +83,30 @@ class PostController extends Controller
       $post=Post::withTrashed()->find(2);
       $post->restore();
    }
+
+   public function firstOrCreate()
+   {
+      $post=Post::firstOrCreate([
+      //    'title'=>'title of post from phpstorm'
+      // ],[
+      //    'title'=>'title of post from phpstorm',
+      //    'content'=>'some content',
+      //    'image'=>'some imageblabla.jpg',
+      //    'likes'=>50000,
+      //    'is_published'=>1
+      // ]);
+
+         'title'=>'some title phpstorm'
+      ],[
+         'title'=>'some title phpstorm',
+         'content'=>'some content',
+         'image'=>'some imageblabla.jpg',
+         'likes'=>50000,
+         'is_published'=>1
+      ]);
+
+
+      dump($post->content);
+      dd('finished');
+   }
 }
