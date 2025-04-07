@@ -28,6 +28,13 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group">
+            <label for="tags">Tag</label>
+            <select multiple class="form-control" id="tags">
+                <option>1</option>
+                
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary mb-3">Update</button>
     </form>
 </div>

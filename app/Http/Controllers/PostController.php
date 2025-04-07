@@ -18,7 +18,8 @@ class PostController extends Controller
    public function create()
    {
       $categories = Category::all();
-      return view('post.create', compact('categories'));
+      $tags=Tag::all();
+      return view('post.create', compact('categories', 'tags'));
    }
 
    public function store()
@@ -28,10 +29,14 @@ class PostController extends Controller
          'title'=>'string',
          'content'=>'string',
          'image'=>'string',
-         'category_id'=>''
+         'category_id'=>'',
+         'tags'=>''
       ]);
-      
-      Post::create($data);
+
+      $tags=$data['tags'];
+      unset($data['tags']);
+      $post=Post::create($data);
+      $post->tags()->attach($tags);
       return redirect()->route('post.index');
    }
 
