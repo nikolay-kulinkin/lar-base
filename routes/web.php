@@ -31,6 +31,7 @@ Route::get('/posts/{post}', [PostController::class,'show'])->name('post.show');
 Route::get('/posts/{post}/edit', [PostController::class,'edit'])->name('post.edit');
 Route::patch('/posts/{post}', [PostController::class,'update'])->name('post.update');
 Route::delete('/posts/{post}', [PostController::class,'destroy'])->name('post.delete');
+
 Route::get('/posts/first_or_create', [PostController::class,'firstOrCreate']);
 
 Route::get('/main', [MainController::class,'index'])->name('main.index');
