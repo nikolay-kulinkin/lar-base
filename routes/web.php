@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MyPlaceController;
+use App\Http\Controllers\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,23 @@ Route::get('/', function () {
 });
 Route::get('/my-page',[MyPlaceController::class,'index']);
 
-Route::get('/posts', [PostController::class,'index'])->name('post.index');
-Route::get('/posts/create', [PostController::class,'create'])->name('post.create');
-Route::post('/posts', [PostController::class,'store'])->name('post.store');
-Route::get('/posts/{post}', [PostController::class,'show'])->name('post.show');
-Route::get('/posts/{post}/edit', [PostController::class,'edit'])->name('post.edit');
-Route::patch('/posts/{post}', [PostController::class,'update'])->name('post.update');
-Route::delete('/posts/{post}', [PostController::class,'destroy'])->name('post.delete');
+// Route::get('/posts', [PostController::class,'index'])->name('post.index');
+// Route::get('/posts/create', [PostController::class,'create'])->name('post.create');
+// Route::post('/posts', [PostController::class,'store'])->name('post.store');
+// Route::get('/posts/{post}', [PostController::class,'show'])->name('post.show');
+// Route::get('/posts/{post}/edit', [PostController::class,'edit'])->name('post.edit');
+// Route::patch('/posts/{post}', [PostController::class,'update'])->name('post.update');
+// Route::delete('/posts/{post}', [PostController::class,'destroy'])->name('post.delete');
+
+Route::namespace('App\Http\Controllers\Post')->group(function(){
+    Route::get('/posts','IndexController')->name('post.index');
+    Route::get('/posts/create','CreateController')->name('post.create');
+    Route::post('/post','StoreController')->name('post.store');
+    Route::get('/post{post}','ShowController')->name('post.show');
+    Route::get('/post{post}/edit','EditController')->name('post.edit');
+    Route::patch('/post{post}','UpdateController')->name('post.update');
+    Route::delete('/post{post}','DestroyController')->name('post.delete');
+});
 
 Route::get('/posts/first_or_create', [PostController::class,'firstOrCreate']);
 
