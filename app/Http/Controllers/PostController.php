@@ -26,9 +26,9 @@ class PostController extends Controller
    {
       $data=request()->validate([
       
-         'title'=>'string',
-         'content'=>'string',
-         'image'=>'string',
+         'title'=>'required|string',
+         'content'=>'required|string',
+         'image'=>'required|string',
          'category_id'=>'',
          'tags'=>''
       ]);
