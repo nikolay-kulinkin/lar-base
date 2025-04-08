@@ -11,7 +11,7 @@
             </div>
             @endforeach
             <div>
-                {{$posts->links('pagination::bootstrap-5')}}
+                {{$posts->withQueryString()->links('pagination::bootstrap-5')}}
             </div>
         </div>
  @endsection
