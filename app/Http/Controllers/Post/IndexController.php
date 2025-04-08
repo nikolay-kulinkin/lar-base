@@ -13,17 +13,7 @@ class IndexController extends BaseController
    public function __invoke()
    {
      
-      // $post = Post::find(1);
-      // dd($post->category);
-
-      // $category = Category::find(1);
-      // dd($category->posts);
-
-      // $tag = Tag::find(1);
-      // dd($tag->posts);
-
-      // dd($post->tags);
-      $posts=Post::all();
+      $posts=Post::paginate(10);
       return view('post.index', compact('posts')); 
    }
 }
