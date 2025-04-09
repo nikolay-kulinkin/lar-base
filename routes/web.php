@@ -43,7 +43,7 @@ Route::namespace('App\Http\Controllers\Post')->group(function(){
     Route::delete('/post{post}','DestroyController')->name('post.delete');
 });
 
-Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->group(function(){
+Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->middleware('admin')->group(function(){
     Route::namespace('Post')->group(function(){
         Route::get('/post', 'IndexController')->name('admin.post.index');
     });
