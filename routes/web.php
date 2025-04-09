@@ -7,7 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MyPlaceController;
-use App\Http\Controllers\Post;
+use App\Http\Controllers\Admin\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,9 +43,15 @@ Route::namespace('App\Http\Controllers\Post')->group(function(){
     Route::delete('/post{post}','DestroyController')->name('post.delete');
 });
 
-Route::get('/posts/first_or_create', [PostController::class,'firstOrCreate']);
+Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->group(function(){
+    Route::namespace('Post')->group(function(){
+        Route::get('/post', 'IndexController')->name('admin.post.index');
+    });
+});
+
 
 Route::get('/main', [MainController::class,'index'])->name('main.index');
+
 Route::get('/contacts', [ContactController::class,'index'])->name('contact.index');
 Route::get('/about', [AboutController::class,'index'])->name('about.index');
 Auth::routes();
