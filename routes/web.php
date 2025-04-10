@@ -36,11 +36,11 @@ Route::get('/my-page',[MyPlaceController::class,'index']);
 Route::namespace('App\Http\Controllers\Post')->group(function(){
     Route::get('/posts','IndexController')->name('post.index');
     Route::get('/posts/create','CreateController')->name('post.create');
-    Route::post('/post','StoreController')->name('post.store');
-    Route::get('/post{post}','ShowController')->name('post.show');
-    Route::get('/post{post}/edit','EditController')->name('post.edit');
-    Route::patch('/post{post}','UpdateController')->name('post.update');
-    Route::delete('/post{post}','DestroyController')->name('post.delete');
+    Route::post('/posts','StoreController')->name('post.store');
+    Route::get('/posts/{post}','ShowController')->name('post.show');
+    Route::get('/posts/{post}/edit','EditController')->name('post.edit');
+    Route::patch('/posts/{post}','UpdateController')->name('post.update');
+    Route::delete('/posts/{post}','DestroyController')->name('post.delete');
 });
 
 Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->middleware('admin')->group(function(){
